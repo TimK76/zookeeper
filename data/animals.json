@@ -110,12 +110,11 @@
       "id": "10"
     },
     {
-      "name": "Harry",
-      "species": "bottom",
+      "name": "Lucy",
+      "species": "Monkey",
       "diet": "omnivore",
       "personalityTraits": [
-        "hungry",
-        "whore"
+        "zany"
       ],
       "id": "11"
     }
