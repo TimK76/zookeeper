@@ -1,9 +1,10 @@
 const fs = require('fs');
 const { filterByQuery, findById, createNewAnimal, validateAnimal } = require('../lib/animals.js');
-const { animals } = require('../data/animals');
+
+jest.mock('fs');
 
 test('creates an animal object', () => {
-  const animal = createNewAnimal({ name: 'Darlene', id: 'jhgdja3ng2' }, animals);
+  const animal = createNewAnimal({ name: 'Darlene', id: 'jhgdja3ng2' }, []);
 
   expect(animal.name).toBe('Darlene');
   expect(animal.id).toBe('jhgdja3ng2');
@@ -60,7 +61,7 @@ test('validates personality traits', () => {
     id: '3',
     name: 'Erica',
     species: 'gorilla',
-    diet: 'omnivore',
+    diet: 'folivore',
     personalityTraits: ['quirky', 'rash']
   };
 
@@ -68,7 +69,7 @@ test('validates personality traits', () => {
     id: '3',
     name: 'Erica',
     species: 'gorilla',
-    diet: 'omnivore'
+    diet: 'folivore'
   };
 
   const result = validateAnimal(animal);
