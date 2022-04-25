@@ -1,6 +1,3 @@
-const { response } = require("express");
-const res = require("express/lib/response");
-
 const $animalForm = document.querySelector('#animal-form');
 const $zookeeperForm = document.querySelector('#zookeeper-form');
 
@@ -30,7 +27,7 @@ const handleAnimalFormSubmit = event => {
   }
   const animalObject = { name, species, diet, personalityTraits };
 
-  fetch('/api/animals', {
+  fetch('api/animals', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -61,24 +58,24 @@ const handleZookeeperFormSubmit = event => {
   const zookeeperObj = { name, age, favoriteAnimal };
   console.log(zookeeperObj);
   fetch('api/zookeepers', {
-    methods: 'POST',
+    method: 'POST',
     headers: {
       Accept: 'application/json',
-      'Content-Type' : 'application/json'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(zookeeperObj)
   })
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    }
-    alert('Error: ' + response.statusText);
-  })
-  .then(postResponse => {
-    console.log(postResponse);
-    alert('Thank you for adding a zookeeper!');
-  });
-} ;
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      alert('Error: ' + response.statusText);
+    })
+    .then(postResponse => {
+      console.log(postResponse);
+      alert('Thank you for adding a zookeeper!');
+    });
+};
 
 $animalForm.addEventListener('submit', handleAnimalFormSubmit);
 $zookeeperForm.addEventListener('submit', handleZookeeperFormSubmit);
